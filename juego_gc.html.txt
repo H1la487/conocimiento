@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Desafío del Conocimiento PMO - Interactivo</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; margin: 20px; background-color: #f4f4f4; color: #333; }
+        .container { background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); margin-bottom: 20px;}
+        h1, h2, h3 { color: #0056b3; }
+        h1 { text-align: center; }
+        .escenario { background-color: #e7f3fe; border-left: 5px solid #2196F3; padding: 15px; margin-top: 15px;}
+        
+        /* Estilo para los botones de opciones/navegación */
+        .opciones button, .decision-navegacion button { 
+            display: block; 
+            width: 100%; /* Opcional: para que ocupen todo el ancho disponible */
+            box-sizing: border-box; /* Para que padding no afecte el width total */
+            background-color: #007bff; 
+            color: white; 
+            padding: 10px 15px; /* Ajustado para botones */
+            margin: 8px 0; 
+            text-decoration: none; 
+            border-radius: 5px; 
+            text-align: center; 
+            border: none; /* Quitar borde por defecto de botones */
+            cursor: pointer; /* Mostrar cursor de mano */
+            font-size: 1em; /* Asegurar tamaño de fuente legible */
+        }
+        .opciones button:hover, .decision-navegacion button:hover { 
+            background-color: #0056b3; 
+        }
+
+        .feedback { padding: 10px; margin-top: 10px; border-radius: 5px; }
+        .feedback.bueno { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .feedback.malo { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .referencia-doc { font-size: 0.9em; color: #555; font-style: italic; }
+
+        /* Nueva clase para ocultar fases por defecto */
+        .fase-juego {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="intro" class="container fase-juego">
+        <h1>El Desafío del Conocimiento PMO</h1>
+        <h2>Bienvenido/a</h2>
+        <p>En este juego, te enfrentarás a un escenario de proyecto y deberás aplicar los principios del "Marco de Gestión del Conocimiento" de la PMO para tomar las mejores decisiones.</p>
+        <div class="escenario">
+            <h3>ESCENARIO INICIAL (Acontecimiento o evento)</h3>
+            <p>El proyecto 'ALFA' está en su tercer trimestre. Se ha detectado una tendencia preocupante: los informes de avance para el cliente están siendo devueltos consistentemente por errores en las métricas de presupuesto y cronograma. Esto está causando retrasos significativos y una creciente molestia en el cliente.</p>
+            <p class="referencia-doc">Referencia: Marco de GC - Sección "A. Acontecimiento o evento dentro de la gestión de proyectos"</p>
+        </div>
+        <div class="opciones">
+            <button onclick="mostrarFase('fase1')">Comenzar Fase 1: Análisis</button>
+        </div>
+    </div>
+
+    <div id="fase1" class="container fase-juego">
+        <h2>Fase 1: Análisis y "Gajes del Oficio"</h2>
+        <p>Recibes más información: un miembro del equipo menciona que "las plantillas de cálculo son confusas" y otro dice que "no hay tiempo para doble revisión". El cliente, en su último correo, exige "precisión y consistencia".</p>
+        <p><strong>Tu tarea:</strong> Aplicar la metodología de "Gajes del Oficio". ¿Cuál es la tendencia detectada y la causa raíz más probable de estos errores recurrentes?</p>
+        <p class="referencia-doc">Referencia: Marco de GC - Sección "D. Aplicación de Gajes del oficio" y template "PMO_202303_Gajes del oficio_template".</p>
+        <div class="opciones">
+            <button onclick="mostrarFase('fase1_opcionA')">Opción A: La causa raíz es la falta de capacitación del equipo en las herramientas de gestión de proyectos.</button>
+            <button onclick="mostrarFase('fase1_opcionB')">Opción B: La causa raíz es la complejidad y poca claridad de las plantillas de informes y la falta de un proceso de revisión definido.</button>
+            <button onclick="mostrarFase('fase1_opcionC')">Opción C: La causa raíz es la presión excesiva del cliente, que no deja tiempo para hacer bien el trabajo.</button>
+        </div>
+    </div>
+
+    <div id="fase1_opcionA" class="container fase-juego">
+        <h3>Resultado de tu elección (Opción A)</h3>
+        <div class="feedback malo">
+            <p><strong>Retroalimentación:</strong> Si bien la capacitación siempre es importante, la información específica sobre "plantillas confusas" y "falta de tiempo para revisión" sugiere que el problema podría estar más en los procesos y herramientas actuales. Considera si esta es la causa raíz principal o un factor contribuyente.</p>
+        </div>
+        <div class="decision-navegacion"><button onclick="mostrarFase('fase2')">Continuar a Fase 2: Post-Mortem</button></div>
+    </div>
+
+    <div id="fase1_opcionB" class="container fase-juego">
+        <h3>Resultado de tu elección (Opción B)</h3>
+        <div class="feedback bueno">
+            <p><strong>Retroalimentación:</strong> ¡Bien analizado! Las "plantillas confusas" y la "falta de un proceso de revisión" apuntan directamente a problemas estructurales en cómo se generan los informes. Esta parece ser una causa raíz más directa según la información disponible, un "gaje del oficio" a documentar.</p>
+        </div>
+        <div class="decision-navegacion"><button onclick="mostrarFase('fase2')">Continuar a Fase 2: Post-Mortem</button></div>
+    </div>
+
+    <div id="fase1_opcionC" class="container fase-juego">
+        <h3>Resultado de tu elección (Opción C)</h3>
+        <div class="feedback malo">
+            <p><strong>Retroalimentación:</strong> La presión del cliente es un factor de contexto, pero raramente es la *causa raíz* de errores técnicos o de proceso. Es más probable que los errores estén exacerbando la presión del cliente. Es importante enfocarse en los factores internos que se pueden controlar.</p>
+        </div>
+        <div class="decision-navegacion"><button onclick="mostrarFase('fase2')">Continuar a Fase 2: Post-Mortem</button></div>
+    </div>
+
+    <div id="fase2" class="container fase-juego">
+        <h2>Fase 2: Post-Mortem y Lecciones Aprendidas</h2>
+        <p>Independientemente de la causa raíz exacta, el equipo implementó una revisión cruzada de emergencia para el último informe, y este fue aprobado. Ahora, es momento de un "mini post-mortem" para registrar formalmente las Lecciones Aprendidas.</p>
+        <p><strong>Tu tarea:</strong> Basado en la situación (errores recurrentes y la solución temporal exitosa), ¿cuál de las siguientes sería la Lección Aprendida más completa y útil a registrar?</p>
+        <p class="referencia-doc">Referencia: Marco de GC - Sección "E. Registro de Lecciones aprendidas", "Lessons Learned Practical Guide", "Quality Lessons Learned".</p>
+        <div class="opciones">
+            <button onclick="mostrarFase('fase2_leccionA')">Lección A: "Los informes se entregaron tarde. Lección: Debemos trabajar más rápido."</button>
+            <button onclick="mostrarFase('fase2_leccionB')">Lección B: "Los informes contenían errores debido a plantillas poco claras y falta de revisión. Lección Positiva: La implementación de una revisión cruzada mejoró la calidad del último informe. Lección Negativa: Depender de soluciones ad-hoc no es sostenible. Recomendación: Revisar y simplificar plantillas y formalizar un proceso de QA."</button>
+            <button onclick="mostrarFase('fase2_leccionC')">Lección C: "El cliente se quejó mucho. Lección: Necesitamos gestionar mejor las expectativas del cliente."</button>
+        </div>
+    </div>
+
+    <div id="fase2_leccionA" class="container fase-juego">
+        <h3>Resultado de tu elección (Lección A)</h3>
+        <div class="feedback malo">
+            <p><strong>Retroalimentación:</strong> Esta lección es muy superficial. No identifica la causa raíz del problema ni ofrece soluciones concretas. Las buenas Lecciones Aprendidas son específicas y accionables.</p>
+        </div>
+        <div class="decision-navegacion"><button onclick="mostrarFase('fase3')">Continuar a Fase 3: Mejora Continua</button></div>
+    </div>
+
+    <div id="fase2_leccionB" class="container fase-juego">
+        <h3>Resultado de tu elección (Lección B)</h3>
+        <div class="feedback bueno">
+            <p><strong>Retroalimentación:</strong> ¡Excelente! Esta lección es completa: describe el problema (qué sucedió y por qué), reconoce tanto lo positivo (la revisión cruzada funcionó) como lo negativo (la causa subyacente), y ofrece recomendaciones claras y accionables, alineadas con las guías de Lecciones Aprendidas.</p>
+        </div>
+        <div class="decision-navegacion"><button onclick="mostrarFase('fase3')">Continuar a Fase 3: Mejora Continua</button></div>
+    </div>
+
+    <div id="fase2_leccionC" class="container fase-juego">
+        <h3>Resultado de tu elección (Lección C)</h3>
+        <div class="feedback malo">
+            <p><strong>Retroalimentación:</strong> Si bien gestionar expectativas es importante, esta lección desvía la atención del problema principal: la calidad de los informes. Las Lecciones Aprendidas deben centrarse en los procesos y entregables del proyecto.</p>
+        </div>
+        <div class="decision-navegacion"><button onclick="mostrarFase('fase3')">Continuar a Fase 3: Mejora Continua</button></div>
+    </div>
+
+    <div id="fase3" class="container fase-juego">
+        <h2>Fase 3: Mejora Continua a partir de Soluciones Innovadoras</h2>
+        <p>Con las Lecciones Aprendidas documentadas (especialmente la importancia de plantillas claras y un proceso de revisión), es momento de proponer acciones de mejora concretas. Estas podrían convertirse en "proyectos internos" para la PMO.</p>
+        <p><strong>Tu tarea:</strong> ¿Qué acción de mejora priorizarías para atender la causa raíz de forma sostenible?</p>
+        <p class="referencia-doc">Referencia: Marco de GC - Sección "F. Mejora continua a partir de soluciones innovadoras".</p>
+        <div class="opciones">
+            <button onclick="mostrarFase('fase3_mejoraA')">Acción A: Realizar un taller urgente con el equipo para recordarles la importancia de la atención al detalle.</button>
+            <button onclick="mostrarFase('fase3_mejoraB')">Acción B: Desarrollar un "proyecto interno" para rediseñar las plantillas de informes, simplificarlas, e implementar un proceso de revisión por pares obligatorio antes de cada entrega al cliente.</button>
+            <button onclick="mostrarFase('fase3_mejoraC')">Acción C: Solicitar al cliente que sea menos exigente con los formatos de los informes.</button>
+        </div>
+    </div>
+
+    <div id="fase3_mejoraA" class="container fase-juego">
+        <h3>Resultado de tu elección (Acción A)</h3>
+        <div class="feedback malo">
+            <p><strong>Retroalimentación:</strong> Un taller puede ser útil, pero si las herramientas (plantillas) y los procesos son deficientes, la atención al detalle por sí sola no resolverá el problema de raíz. Es una solución parcial.</p>
+        </div>
+        <div class="decision-navegacion"><button onclick="mostrarFase('fase4')">Continuar a Fase 4: Divulgación</button></div>
+    </div>
+
+    <div id="fase3_mejoraB" class="container fase-juego">
+        <h3>Resultado de tu elección (Acción B)</h3>
+        <div class="feedback bueno">
+            <p><strong>Retroalimentación:</strong> ¡Muy bien! Esta acción aborda directamente las causas raíz identificadas (plantillas y proceso de revisión). Convertirlo en un "proyecto interno" asegura que se le dé la dedicación necesaria para una solución robusta y duradera, fomentando la mejora continua.</p>
+        </div>
+        <div class="decision-navegacion"><button onclick="mostrarFase('fase4')">Continuar a Fase 4: Divulgación</button></div>
+    </div>
+
+    <div id="fase3_mejoraC" class="container fase-juego">
+        <h3>Resultado de tu elección (Acción C)</h3>
+        <div class="feedback malo">
+            <p><strong>Retroalimentación:</strong> Intentar que el cliente reduzca sus estándares de calidad raramente es una estrategia exitosa o profesional. La mejora debe venir de optimizar los procesos internos.</p>
+        </div>
+        <div class="decision-navegacion"><button onclick="mostrarFase('fase4')">Continuar a Fase 4: Divulgación</button></div>
+    </div>
+    
+    <div id="fase4" class="container fase-juego">
+        <h2>Fase 4: Divulgación de la Información</h2>
+        <p>Has analizado la situación, documentado los "Gajes del Oficio", extraído "Lecciones Aprendidas" valiosas y propuesto "Acciones de Mejora".</p>
+        <p><strong>Tu tarea final:</strong> Según el Marco de Gestión del Conocimiento de la PMO, ¿cuál es el paso crucial para asegurar que este conocimiento beneficie a toda la organización y futuros proyectos?</p>
+        <p class="referencia-doc">Referencia: Marco de GC - Sección "Divulgación de la información".</p>
+        <div class="opciones">
+            <button onclick="mostrarFase('fase4_opcionA')">Opción A: Guardar toda la documentación en una carpeta personal para referencia futura propia.</button>
+            <button onclick="mostrarFase('fase4_opcionB')">Opción B: Enviar un correo electrónico resumen al equipo del proyecto 'ALFA' únicamente.</button>
+            <button onclick="mostrarFase('fase4_opcionC')">Opción C: Almacenar toda la información generada en las carpetas de proyecto designadas y remitirla a la PMO para su inclusión en el PAMCO Information HUB (posiblemente actualizando la "PMO_240101_Matriz de herramientas y usuarios_final").</button>
+        </div>
+    </div>
+
+    <div id="fase4_opcionA" class="container fase-juego">
+        <h3>Resultado de tu elección (Opción A)</h3>
+        <div class="feedback malo">
+            <p><strong>Retroalimentación:</strong> Si bien es bueno tener referencias personales, la Gestión del Conocimiento busca el beneficio colectivo. El conocimiento aislado pierde gran parte de su valor organizacional.</p>
+        </div>
+        <div class="decision-navegacion"><button onclick="mostrarFase('conclusion_mejorable')">Ver Conclusión</button></div>
+    </div>
+
+    <div id="fase4_opcionB" class="container fase-juego">
+        <h3>Resultado de tu elección (Opción B)</h3>
+        <div class="feedback malo">
+            <p><strong>Retroalimentación:</strong> Compartir con el equipo directo es un buen primer paso, pero no cumple con el objetivo de la PMO de centralizar y divulgar el conocimiento para toda la organización y futuros proyectos.</p>
+        </div>
+        <div class="decision-navegacion"><button onclick="mostrarFase('conclusion_mejorable')">Ver Conclusión</button></div>
+    </div>
+
+    <div id="fase4_opcionC" class="container fase-juego">
+        <h3>Resultado de tu elección (Opción C)</h3>
+        <div class="feedback bueno">
+            <p><strong>Retroalimentación:</strong> ¡Absolutamente correcto! Este es el procedimiento que asegura que el conocimiento se preserve, se comparta y esté accesible para todos, maximizando su valor y contribuyendo al aprendizaje organizacional continuo, tal como lo establece el marco de la PMO y la función del PAMCO Information HUB.</p>
+        </div>
+        <div class="decision-navegacion"><button onclick="mostrarFase('conclusion_excelente')">Ver Conclusión</button></div>
+    </div>
+
+    <div id="conclusion_excelente" class="container fase-juego">
+        <h2>¡Excelente Trabajo!</h2>
+        <p>Has navegado el "Desafío del Conocimiento PMO" con éxito, aplicando correctamente los principios clave del Marco de Gestión del Conocimiento. Tus decisiones demuestran una buena comprensión de cómo identificar problemas, aprender de ellos, proponer mejoras y, fundamentalmente, asegurar que ese conocimiento se comparta para el beneficio de todos.</p>
+        <p>¡Sigue aplicando estos principios en tus proyectos!</p>
+        <div class="opciones">
+            <button onclick="mostrarFase('intro')">Jugar de Nuevo</button>
+        </div>
+    </div>
+
+    <div id="conclusion_mejorable" class="container fase-juego">
+        <h2>Conclusión del Desafío</h2>
+        <p>Has completado el escenario. Algunas de tus decisiones fueron acertadas, pero hay oportunidades para alinearse aún más con el Marco de Gestión del Conocimiento de
